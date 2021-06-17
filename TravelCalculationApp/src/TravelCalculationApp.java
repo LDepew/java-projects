@@ -22,7 +22,7 @@ public class TravelCalculationApp {
 		
 		System.out.println(); //blank line space
 		System.out.println("Travel time is:  " + nf.format((distance / speed)) + " hours.");
-		System.out.println("Gas required is: " + (distance / mpg) + " gallons.");
+		System.out.println("Gas required is: " + nf.format((distance / mpg)) + " gallons.");
 		
 		
 		
