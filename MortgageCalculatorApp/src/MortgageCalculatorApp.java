@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class MortgageCalculatorApp {
@@ -7,8 +8,11 @@ public class MortgageCalculatorApp {
 		System.out.println();
 		
 		Scanner sc = new Scanner(System.in);
+		String choice = "y";
 		
-		System.out.print("Please enter cost of home: ");
+		while(choice.equalsIgnoreCase("y")) {
+		
+		System.out.print("Enter cost of home: ");
 		double homeCost = sc.nextDouble();
 		
 		System.out.print("Enter number of years for loan: ");
@@ -18,16 +22,22 @@ public class MortgageCalculatorApp {
 		double mortgageRate = sc.nextDouble();
 		System.out.println();
 		
+		NumberFormat nf = NumberFormat.getInstance();
+		nf.setMaximumFractionDigits(2);
+		
 		double yearlyCost = homeCost / loanYears;
-		System.out.println("Yearly cost = " + yearlyCost);
+		System.out.println("Yearly cost = " + nf.format(yearlyCost));
 		
 		double monthlyCost = yearlyCost / 12;
-		System.out.println("Monthly cost = " + monthlyCost);
+		System.out.println("Monthly cost = " + nf.format(monthlyCost));
 		
 		double mortgageCost = yearlyCost / mortgageRate;
-		System.out.println("Mortage Cost = " + mortgageCost);
+		System.out.println("Mortage Cost = " + nf.format(mortgageCost));
+		System.out.println();
 		
-		
+		System.out.println("Continue (y/n)? ");
+		choice = sc.next();
+		}
 		
 		
 		
