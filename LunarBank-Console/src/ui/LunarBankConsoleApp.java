@@ -1,18 +1,65 @@
 package ui;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class LunarBankConsoleApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		System.out.println("Welcome to the Lunar Bank Console App!");
+		
+		String[] userData2 = new String[4];
+		
+		ArrayList<String> userData = new ArrayList<String>();
+		
+		String line = null;
+	    try {
+	        BufferedReader reader = new BufferedReader(new FileReader("D:\\users.txt"));
+	        while((line = reader.readLine()) != null){
+	        	  userData.add(line);
+	        	}
+	        reader.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    for (int i = 0; i < 4; i++) {
+	    	System.out.println(userData.get(i));
+	    }
 		
 		Scanner sc =  new Scanner(System.in);
 		int command = 0;
-		double balance = 1000.00;
+		String user1 = userData.get(0);
+		double balance1 = Double.parseDouble(userData.get(1));
+	    System.out.println(balance1);
+		String user2 = userData.get(2);
+		double balance2 = Double.parseDouble(userData.get(3));
+		System.out.println(balance2);
+		String account = "";
 		
-		while (!(command == 6)) {
+			System.out.print("Select account: ");
+			account = sc.next();
+			
+		while (!(command == 5)) {
+			
+			double balance = 0;
+			
+			if (account.equals(user1)) {
+				balance = balance1;
+			}
+			else if (account.equals(user2)) {
+				balance = balance2;
+			}
+			else {
+				System.out.println("No User Found!");
+				break;
+			}
+			
 			System.out.println("MENU:");
 			System.out.println("====================");
 			System.out.println("1:\tCheck Balance");
@@ -20,7 +67,6 @@ public class LunarBankConsoleApp {
 			System.out.println("3:\tWithdraw Money");
 			System.out.println("4:\tLoan Calculator");
 			System.out.println("5:\tLogout");
-			System.out.println("6:\tExit");
 			System.out.println();
 			
 			System.out.print("Select an option: ");
@@ -78,10 +124,8 @@ public class LunarBankConsoleApp {
 			}
 			
 		}
-		
 		sc.close();
 		System.out.println("Bye!");
-
 	}
 
-}
+	}
