@@ -7,13 +7,13 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class LunarBankConsoleApp {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		System.out.println("Welcome to the Lunar Bank Console App!");
 		
-		String[] userData2 = new String[4];
 		
 		ArrayList<String> userData = new ArrayList<String>();
 		
@@ -28,37 +28,47 @@ public class LunarBankConsoleApp {
 	        e.printStackTrace();
 	    }
 	    
-	    for (int i = 0; i < 4; i++) {
+	    ArrayList<String> userBalance = new ArrayList<String>();
+		
+		String line2 = null;
+	    try {
+	        BufferedReader reader2 = new BufferedReader(new FileReader("D:\\balances.txt"));
+	        while((line2 = reader2.readLine()) != null){
+	        	  userBalance.add(line2);
+	        	}
+	        reader2.close();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    for (int i = 0; i < userData.size(); i++) {
 	    	System.out.println(userData.get(i));
+	    }
+	    
+	    for (int i = 0; i < userBalance.size(); i++) {
+	    	System.out.println(userBalance.get(i));
 	    }
 		
 		Scanner sc =  new Scanner(System.in);
 		int command = 0;
-		String user1 = userData.get(0);
-		double balance1 = Double.parseDouble(userData.get(1));
-	    System.out.println(balance1);
-		String user2 = userData.get(2);
-		double balance2 = Double.parseDouble(userData.get(3));
-		System.out.println(balance2);
+		//double balance1 = Double.parseDouble(userBalance.get(0));
+		//double balance2 = Double.parseDouble(userBalance.get(1));
 		String account = "";
 		
 			System.out.print("Select account: ");
 			account = sc.next();
 			
-		while (!(command == 5)) {
-			
 			double balance = 0;
+			String balanceStr = "";
 			
-			if (account.equals(user1)) {
-				balance = balance1;
+			for (int i = 0; i < userData.size(); i++) {
+				if (account.equals(userData.get(i))) {
+				balanceStr = userBalance.get(i);
+				balance = Double.parseDouble(balanceStr);
+				}
 			}
-			else if (account.equals(user2)) {
-				balance = balance2;
-			}
-			else {
-				System.out.println("No User Found!");
-				break;
-			}
+			
+		while (!(command == 5)) {
 			
 			System.out.println("MENU:");
 			System.out.println("====================");
@@ -119,12 +129,44 @@ public class LunarBankConsoleApp {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				break;
-				
+				break;	
 			}
-			
 		}
+
 		sc.close();
+		
+		for (int i = 0; i < userData.size(); i++) {
+		if (account.equals(userData.get(i))) {
+			System.out.println("bala$%" + balance);
+		balanceStr = String.valueOf(balance);
+		userBalance.set(i, balanceStr);
+		}
+	}
+		
+		System.out.println("idk" + balanceStr);
+		
+		try (PrintWriter out = new PrintWriter("D:\\users.txt")) {
+			for (int i = 0; i < userData.size(); i++) {
+				out.println(userData.get(i));
+				System.out.println(userData.get(i));
+			}
+			out.flush();
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		try (PrintWriter out2 = new PrintWriter("D:\\balances.txt")) {
+			for (int i = 0; i < userBalance.size(); i++) {
+				out2.println(userBalance.get(i));
+				System.out.println(userBalance.get(i));
+			}
+			out2.flush();
+			out2.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		System.out.println("Bye!");
 	}
 
