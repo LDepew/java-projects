@@ -51,21 +51,40 @@ public class LunarBankConsoleApp {
 		
 		Scanner sc =  new Scanner(System.in);
 		int command = 0;
-		//double balance1 = Double.parseDouble(userBalance.get(0));
-		//double balance2 = Double.parseDouble(userBalance.get(1));
 		String account = "";
 		
-			System.out.print("Select account: ");
+			System.out.println("Select account: ");
+			System.out.println("Add account: ");
+			System.out.println("Delete account: ");
 			account = sc.next();
 			
 			double balance = 0;
 			String balanceStr = "";
-			
+			if (account.equals("Add")) {
+				System.out.println("Add Account WOrking");
+				System.out.println("Enter name: ");
+				String accName = sc.next();
+				userData.add(accName);
+				userBalance.add("0.0");
+			}
+			else if (account.equals("Delete")) {
+				System.out.println("Delete account WOrking");
+				System.out.println("Enter name: ");
+				String delName = sc.next();
+				for (int i = 0; i < userData.size(); i++) {
+					if (userData.get(i).equals(delName)) {
+						userData.remove(i);
+						userBalance.remove(i);
+					}
+				}
+			}
+			else {
 			for (int i = 0; i < userData.size(); i++) {
 				if (account.equals(userData.get(i))) {
 				balanceStr = userBalance.get(i);
 				balance = Double.parseDouble(balanceStr);
 				}
+			}
 			}
 			
 		while (!(command == 5)) {
