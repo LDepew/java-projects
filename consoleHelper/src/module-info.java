@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Metal
+ *
+ */
+module consoleHelper {
+}
