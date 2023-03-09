@@ -1,8 +1,13 @@
 import java.util.Random;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class ZombieHunterApp {
 
 	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		
 		System.out.println("Welcome to the Zombie Hunter app!!!");
 		System.out.println();
 		System.out.println("There will be various types of zombies approaching, you have to select the best type of weapon to use against them. \n"
@@ -30,10 +35,51 @@ public class ZombieHunterApp {
 		for (int i = 0; i < 7; i++) {
 			System.out.println(zombies[i] + " - " + zombieHealth[i]);
 		}
-
-		int n = rand.nextInt(3);
+		int distance = rand.nextInt(250);
+		int n = rand.nextInt(7);
+		String zType = zombies[n];
+		int zHealth = zombieHealth[n];
+		int zSpeed = zombieSpeed[n];
+		int bDamage;
 		
-		System.out.println(backpack[n]);
+		System.out.println();
+		System.out.println(zombies[n] + " is approaching");
+		System.out.println(zombies[n] + " has " + zombieHealth[n] + " health and walks at a speed of " + zombieSpeed[n] + ".");
+		System.out.println();
+		
+		System.out.print("Select a weapon from your backpack. - ");
+		String backpackSelect = input.nextLine();
+		
+		for (int i = 0; i < 7; i++) {
+             if (backpackSelect.equals(backpack[i])) {
+            	 bDamage = backpackDamage[i];
+            	 System.out.println("Yes");
+            	 while ((distance > 0) || (zHealth > 0)) {
+            		 distance = distance - zSpeed;
+            		 System.out.println(zombies[n] + " is " + distance + " feet away.");
+            		 System.out.println(bDamage + " amount of damage done.");
+            		 zHealth = zHealth - bDamage;
+            		 System.out.println(zombies[n] + " has " + zHealth + " health left.");
+            		 System.out.println();
+            		 try {
+     					TimeUnit.SECONDS.sleep(2);
+     				} catch (InterruptedException e) {
+     					// TODO Auto-generated catch block
+     					e.printStackTrace();
+     				} 
+            		 //Math.max(0, distance);
+            		 if (distance <= 0) {
+            			 System.out.println("The zombie has reached you. You are dead!");
+            			 break;
+            		 }else if (zHealth <= 0) {
+            			 System.out.println("You have killed the zombie!");
+            			 break;
+            		 }
+            	 }
+             } else {
+            	 System.out.println("Weapon not found in backpack!");
+             }
+        }
 	}
 
 }
