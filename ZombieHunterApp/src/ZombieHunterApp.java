@@ -15,7 +15,6 @@ public class ZombieHunterApp {
 		System.out.println();
 		
 		Random rand = new Random();
-		int health = 100;
 		
 		String backpack[] = {"Shotgun", "Crossbow", "Baseball Bat", "Handgun", "Machete", "Assault Rifle", "Sniper Rifle"};
 		int backpackDamage[] = {90, 14, 20, 8, 30, 65, 125};
@@ -37,7 +36,6 @@ public class ZombieHunterApp {
 		}
 		int distance = rand.nextInt(250);
 		int n = rand.nextInt(7);
-		String zType = zombies[n];
 		int zHealth = zombieHealth[n];
 		int zSpeed = zombieSpeed[n];
 		int bDamage;
@@ -54,32 +52,38 @@ public class ZombieHunterApp {
              if (backpackSelect.equals(backpack[i])) {
             	 bDamage = backpackDamage[i];
             	 System.out.println("Yes");
-            	 while ((distance > 0) || (zHealth > 0)) {
+            	 System.out.println();
+            	 
+            	 while ((distance > 0) && (zHealth > 0)) {
             		 distance = distance - zSpeed;
+            		 zHealth = zHealth - bDamage;
+            		 
+            		 if (distance > 0 && zHealth > 0) {
             		 System.out.println(zombies[n] + " is " + distance + " feet away.");
             		 System.out.println(bDamage + " amount of damage done.");
-            		 zHealth = zHealth - bDamage;
             		 System.out.println(zombies[n] + " has " + zHealth + " health left.");
             		 System.out.println();
-            		 try {
-     					TimeUnit.SECONDS.sleep(2);
-     				} catch (InterruptedException e) {
-     					// TODO Auto-generated catch block
-     					e.printStackTrace();
-     				} 
-            		 //Math.max(0, distance);
-            		 if (distance <= 0) {
+            		 }
+            		 else if (distance <= 0) {
             			 System.out.println("The zombie has reached you. You are dead!");
             			 break;
             		 }else if (zHealth <= 0) {
             			 System.out.println("You have killed the zombie!");
             			 break;
             		 }
+            		 try {
+     					TimeUnit.SECONDS.sleep(2);
+     				} catch (InterruptedException e) {
+     					// TODO Auto-generated catch block
+     					e.printStackTrace();
+     				}             		 
             	 }
              } else {
             	 System.out.println("Weapon not found in backpack!");
              }
         }
+		
+		input.close();
 	}
 
 }
