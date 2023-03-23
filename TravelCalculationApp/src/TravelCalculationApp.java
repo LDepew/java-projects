@@ -9,6 +9,9 @@ public class TravelCalculationApp {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		String choice = "y";
+		while (choice.equalsIgnoreCase("y")) {
+		
 		System.out.print("Input travel distance: ");
 		double distance = sc.nextDouble();
 		System.out.print("Input average speed: ");
@@ -29,6 +32,10 @@ public class TravelCalculationApp {
 		System.out.println("Gas required is: " + nf.format((distance / mpg)) + " gallons.");
 		System.out.println("Estimate cost of fuel is: $" + nf.format((mpg * gas)));
 		System.out.println();
+		
+		System.out.println("Continue? (y/n):");
+		choice = sc.next();
+		}
 		
 		System.out.println("Bye");
 		sc.close();
