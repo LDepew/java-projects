@@ -5,22 +5,24 @@ public class Account {
 	int previousTransaction;
 	String customerName;
 	String customerID;
+	double customerBalance;
 	
-	Account(String cname, String cid) {
+	Account(String cname, String cid, double cbal) {
 		customerName = cname;
 		customerID = cid;
+		customerBalance = cbal;
 	}
 	
 	void deposit(int amount) {
 		if (amount != 0) {
-			balance = balance + amount;
+			customerBalance = customerBalance + amount;
 			previousTransaction = amount;
 		}
 	}
 		
 		void withdraw(int amount) {
 			if (amount != 0) {
-				balance = balance - amount;
+				customerBalance = customerBalance - amount;
 				previousTransaction = -amount;
 			}
 		}
@@ -37,7 +39,7 @@ public class Account {
 		
 		void calculateInterest(int years) {
 			double interestRate = .0185;
-			double newBalance = (balance * interestRate * years) + balance;
+			double newBalance = (customerBalance * interestRate * years) + customerBalance;
 			System.out.println("The current interest rate is " + (100 * interestRate) + "%");
 			System.out.println("After " + years + " years, your balance will be: " + newBalance);
 		}
@@ -68,7 +70,7 @@ public class Account {
 				switch(option) {
 				case 'A':
 					System.out.println("============================");
-					System.out.println("Balance = $" + balance);
+					System.out.println("Balance = $" + customerBalance);
 					System.out.println("============================");
 					System.out.println();
 					break;
