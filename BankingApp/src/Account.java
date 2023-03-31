@@ -4,12 +4,12 @@ public class Account {
 	int balance;
 	int previousTransaction;
 	String customerName;
-	String customerID;
+	Integer customerID;
 	double customerBalance;
 	
-	Account(String cname, String cid, double cbal) {
+	Account(String cname, Integer integer, double cbal) {
 		customerName = cname;
-		customerID = cid;
+		customerID = integer;
 		customerBalance = cbal;
 	}
 	
