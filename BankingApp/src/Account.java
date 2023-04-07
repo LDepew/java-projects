@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Account {
-	int balance;
-	int previousTransaction;
+	double balance;
+	double previousTransaction;
 	String customerName;
 	Integer customerID;
 	double customerBalance;
@@ -13,15 +13,15 @@ public class Account {
 		customerBalance = cbal;
 	}
 	
-	void deposit(int amount) {
-		if (amount != 0) {
+	void deposit(double amount) {
+		if (amount != 0.0) {
 			customerBalance = customerBalance + amount;
 			previousTransaction = amount;
 		}
 	}
 		
-		void withdraw(int amount) {
-			if (amount != 0) {
+		void withdraw(double amount) {
+			if (amount != 0.0) {
 				customerBalance = customerBalance - amount;
 				previousTransaction = -amount;
 			}
@@ -77,14 +77,14 @@ public class Account {
 					
 				case 'B':
 					System.out.println("Enter an amount to deposit: ");
-					int amount = scanner.nextInt();
+					double amount = scanner.nextDouble();
 					deposit(amount);
 					System.out.println();
 					break;
 					
 				case 'C':
 					System.out.println("Enter an amount to withdrawal: ");
-					int amount2 = scanner.nextInt();
+					double amount2 = scanner.nextDouble();
 					withdraw(amount2);
 					System.out.println();
 					break;
