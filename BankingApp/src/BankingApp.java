@@ -18,27 +18,29 @@ public class BankingApp implements Serializable {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		
-		/*File f = new File(filePathString);
-		if(f.exists() && !f.isDirectory()) { 
-		    // do something
-		}*/
-		
-		//File namesFile = new File("names.tmp");
-		//File accountsFile = new File("accounts.tmp");
-		//File balancesFile = new File("balances.tmp");
-		
-		BufferedReader bufReader = new BufferedReader(new FileReader("output.tmp"));
+		File f = new File("output.tmp");
 		ArrayList<String> names = new ArrayList<>();
 		
+		if (f.exists() && !f.isDirectory()) {
+			BufferedReader bufReader = new BufferedReader(new FileReader("output.tmp"));
+			System.out.println("File is here");
 		String line = bufReader.readLine();
 		while (line != null) {
 			names.add(line);
 			line = bufReader.readLine();
 		}
+		bufReader.close();
+		} else {
+			System.out.println("File is not here");
+			names.add("System");
+		}
 
-		BufferedReader bufReader2 = new BufferedReader(new FileReader("output2.tmp"));
+		File f2 = new File("output2.tmp");
 		ArrayList<Integer> accounts = new ArrayList<Integer>();
 		
+		if (f2.exists() && !f2.isDirectory()) {
+			BufferedReader bufReader2 = new BufferedReader(new FileReader("output2.tmp"));
+			System.out.println("File2 is here");
 		String line2 = bufReader2.readLine();
 		int line2b = 0;
 		while (line2 != null) {
@@ -46,16 +48,30 @@ public class BankingApp implements Serializable {
 			accounts.add(line2b);
 			line2 = bufReader2.readLine();
 		}
+		bufReader2.close();
+		} else {
+			System.out.println("File2 is not here");
+			accounts.add(1000);
+		}
 		
-		BufferedReader bufReader3 = new BufferedReader(new FileReader("output3.tmp"));
+		File f3 = new File("output3.tmp");
+		
 		ArrayList<Double> balances = new ArrayList<Double>();
 		
+		if (f3.exists() && !f3.isDirectory()) {
+			BufferedReader bufReader3 = new BufferedReader(new FileReader("output3.tmp"));
+			System.out.println("File3 is here");
 		String line3 = bufReader3.readLine();
 		double line3b;
 		while (line3 != null) {
 			line3b = Double.parseDouble(line3);
 			balances.add(line3b);
 			line3 = bufReader3.readLine();
+		}
+		bufReader3.close();
+		} else {
+			System.out.println("File3 is not here");
+			balances.add(0000.00);
 		}
 		
 		for (int i = 0; i <  names.size(); i++) {
@@ -69,11 +85,6 @@ public class BankingApp implements Serializable {
 		for (int i = 0; i < balances.size(); i++) {
 			System.out.println(balances.get(i));
 		}
-		
-		
-		bufReader.close();
-		bufReader2.close();
-		bufReader3.close();
 		
 		System.out.println("Enter account name: ");
 		String name = sc.next();

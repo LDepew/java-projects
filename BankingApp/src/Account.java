@@ -57,7 +57,8 @@ public class Account {
 			System.out.println("C. Make a withdrawal");
 			System.out.println("D. View previous transaction");
 			System.out.println("E. Calculate interest");
-			System.out.println("F. Exit");
+			System.out.println("F. Remove Account");
+			System.out.println("G. Exit");
 			
 			
 			do {
@@ -103,6 +104,10 @@ public class Account {
 					break;
 					
 				case 'F':
+					System.out.println("In Progress");
+					break;
+					
+				case 'G':
 					System.out.println("=============================");
 					break;
 					
@@ -110,7 +115,7 @@ public class Account {
 					System.out.println("Error: invalid option. Please enter A, B, C, D, E, or access services.");
 					break;
 				}
-			} while(option != 'F');
+			} while(option != 'G');
 			scanner.close();
 			System.out.println("Thank you for banking with us!");
 		}
