@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class Account {
+@SuppressWarnings("serial")
+public class Account extends BankingApp {
 	double balance;
 	double previousTransaction;
 	String customerName;
@@ -105,6 +106,7 @@ public class Account {
 					
 				case 'F':
 					System.out.println("In Progress");
+					System.out.println("=============================");
 					break;
 					
 				case 'G':
@@ -112,12 +114,11 @@ public class Account {
 					break;
 					
 				default:
-					System.out.println("Error: invalid option. Please enter A, B, C, D, E, or access services.");
+					System.out.println("Error: invalid option. Please enter A, B, C, D, E, F or access services.");
 					break;
 				}
-			} while(option != 'G');
+			} while(option != 'G' && option != 'F');
 			scanner.close();
 			System.out.println("Thank you for banking with us!");
 		}
 }
-

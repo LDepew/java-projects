@@ -19,7 +19,7 @@ public class BankingApp implements Serializable {
 		Scanner sc = new Scanner(System.in);
 		
 		File f = new File("output.tmp");
-		ArrayList<String> names = new ArrayList<>();
+		ArrayList<String> names = new ArrayList<String>();
 		
 		if (f.exists() && !f.isDirectory()) {
 			BufferedReader bufReader = new BufferedReader(new FileReader("output.tmp"));
@@ -109,7 +109,7 @@ public class BankingApp implements Serializable {
 			System.out.println(accounts.get(i));
 			System.out.println(balances.get(i));
 		}
-		
+			
 		if (names.contains(name)) {
 			Account bob = null;
 			for (int i = 0; i <= names.indexOf(name); i++) {
@@ -167,5 +167,4 @@ public class BankingApp implements Serializable {
 		sc.close();
 		
 	}
-
 }
