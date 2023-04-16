@@ -9,11 +9,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import business.User;
+//import business.User;
 import java.io.Console;
 import db.DAO;
 public class LunarBankConsoleApp {
-	private static DAO<User> userDAO = new UserDB();
+	//private static DAO<User> userDAO = new UserDB();
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		System.out.println("Welcome to the Lunar Bank Console App!");
