@@ -35,28 +35,14 @@ public class MortgageCalculatorApp {
 		System.out.println("Mortage Cost = " + nf.format(mortgageCost));
 		System.out.println();
 		
+		double totalCost = homeCost + mortgageCost;
+		System.out.println("Total Cost = " + nf.format(totalCost));
+		
 		System.out.println("Continue (y/n)? ");
 		choice = sc.next();
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		sc.close();
 		System.out.println("Bye!");
 
 	}
