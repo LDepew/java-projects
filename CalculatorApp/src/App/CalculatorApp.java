@@ -3,6 +3,9 @@ package App;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
@@ -20,6 +23,10 @@ public class CalculatorApp {
 	JPanel buttons;
 	
 	public CalculatorApp() {
+		
+		ArrayList<Integer> number1 = new ArrayList<Integer>();
+		ArrayList<Integer> number2 = new ArrayList<Integer>();
+		
 		frame = new JFrame();
 		frame.setSize(350, 530);
 		frame.setResizable(false);
@@ -38,42 +45,122 @@ public class CalculatorApp {
 		JButton one = new JButton("1");
 		one.setFont(new Font("Verdana", 1, 22));
 		one.setPreferredSize(new Dimension(65, 65));
+		one.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.add(1);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton two = new JButton("2");
 		two.setFont(new Font("Verdana", 1, 22));
 		two.setPreferredSize(new Dimension(65, 65));
+		two.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.add(2);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton three = new JButton("3");
 		three.setFont(new Font("Verdana", 1, 22));
 		three.setPreferredSize(new Dimension(65, 65));
+		three.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.add(3);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton four = new JButton("4");
 		four.setFont(new Font("Verdana", 1, 22));
 		four.setPreferredSize(new Dimension(65, 65));
+		four.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.add(4);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton five = new JButton("5");
 		five.setFont(new Font("Verdana", 1, 22));
 		five.setPreferredSize(new Dimension(65, 65));
+		five.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.add(5);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton six = new JButton("6");
 		six.setFont(new Font("Verdana", 1, 22));
 		six.setPreferredSize(new Dimension(65, 65));
+		six.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.add(6);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton seven = new JButton("7");
 		seven.setFont(new Font("Verdana", 1, 22));
 		seven.setPreferredSize(new Dimension(65, 65));
+		seven.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.add(7);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton eight = new JButton("8");
 		eight.setFont(new Font("Verdana", 1, 22));
 		eight.setPreferredSize(new Dimension(65, 65));
+		eight.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.add(8);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton nine = new JButton("9");
 		nine.setFont(new Font("Verdana", 1, 22));
 		nine.setPreferredSize(new Dimension(65, 65));
+		nine.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.add(9);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton zero = new JButton("0");
 		zero.setFont(new Font("Verdana", 1, 22));
 		zero.setPreferredSize(new Dimension(65, 65));
+		zero.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.add(0);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton divide = new JButton("/");
 		divide.setFont(new Font("Verdana", 1, 22));
@@ -106,19 +193,43 @@ public class CalculatorApp {
 		JButton clear = new JButton("clr");
 		clear.setFont(new Font("Verdana", 1, 15));
 		clear.setPreferredSize(new Dimension(65, 65));
+		clear.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.removeAll(number1);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
 		JButton delete = new JButton("del");
 		delete.setFont(new Font("Verdana", 1, 15));
 		delete.setPreferredSize(new Dimension(65, 65));
+		delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				number1.remove(number1.size() - 1);
+				outputLabel.setText(number1.toString());
+			}
+		});
 		
-		JButton space = new JButton();
-		space.setPreferredSize(new Dimension(65, 65));
+		JButton close = new JButton("cls");
+		close.setFont(new Font("Verdana", 1, 15));
+		close.setPreferredSize(new Dimension(65, 65));
+		close.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		
 		buttons = new JPanel();
 		buttons.setPreferredSize(new Dimension(300, 370));
 		buttons.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5, false));
 		
-		buttons.add(space);
+		buttons.add(close);
 		buttons.add(clear);
 		buttons.add(delete);
 		buttons.add(divide);
