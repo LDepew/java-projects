@@ -21,11 +21,17 @@ public class CalculatorApp {
 	JPanel output;
 	JLabel outputLabel;
 	JPanel buttons;
+	JButton equals;
+	
+	private static int num1Int = 0;
+	//private static int num2Int = 0;
 	
 	public CalculatorApp() {
 		
-		ArrayList<Integer> number1 = new ArrayList<Integer>();
-		ArrayList<Integer> number2 = new ArrayList<Integer>();
+		StringBuilder str = new StringBuilder("");
+		//StringBuilder str2 =  new StringBuilder("");
+		ArrayList<String> number1 = new ArrayList<String>();
+		//ArrayList<String> number2 = new ArrayList<String>();
 		
 		frame = new JFrame();
 		frame.setSize(350, 530);
@@ -34,7 +40,7 @@ public class CalculatorApp {
 		main = new JPanel();
 		main.setSize(350, 530);
 		
-		outputLabel = new JLabel("output here");
+		outputLabel = new JLabel("0");
 		outputLabel.setFont(new Font("Verdana", 1, 22));
 		
 		output = new JPanel();
@@ -49,8 +55,9 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				number1.add(1);
-				outputLabel.setText(number1.toString());
+				str.append('1');
+				number1.add("1");
+				outputLabel.setText(str.toString());
 			}
 		});
 		
@@ -61,8 +68,9 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				number1.add(2);
-				outputLabel.setText(number1.toString());
+				str.append("2");
+				number1.add("2");
+				outputLabel.setText(str.toString());
 			}
 		});
 		
@@ -73,8 +81,9 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				number1.add(3);
-				outputLabel.setText(number1.toString());
+				str.append("3");
+				number1.add("3");
+				outputLabel.setText(str.toString());
 			}
 		});
 		
@@ -85,8 +94,9 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				number1.add(4);
-				outputLabel.setText(number1.toString());
+				str.append("4");
+				number1.add("4");
+				outputLabel.setText(str.toString());
 			}
 		});
 		
@@ -97,8 +107,9 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				number1.add(5);
-				outputLabel.setText(number1.toString());
+				str.append("5");
+				number1.add("5");
+				outputLabel.setText(str.toString());
 			}
 		});
 		
@@ -109,8 +120,9 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				number1.add(6);
-				outputLabel.setText(number1.toString());
+				str.append("6");
+				number1.add("6");
+				outputLabel.setText(str.toString());
 			}
 		});
 		
@@ -121,8 +133,9 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				number1.add(7);
-				outputLabel.setText(number1.toString());
+				str.append("7");
+				number1.add("7");
+				outputLabel.setText(str.toString());
 			}
 		});
 		
@@ -133,8 +146,9 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				number1.add(8);
-				outputLabel.setText(number1.toString());
+				str.append("8");
+				number1.add("8");
+				outputLabel.setText(str.toString());
 			}
 		});
 		
@@ -145,8 +159,10 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				number1.add(9);
-				outputLabel.setText(number1.toString());
+				str.append("9");
+				number1.add("9");
+				outputLabel.setText(str.toString());
+				//outputLabel.setText(number1.toString().replaceAll("[\\[\\]]", "").replaceAll(",", ""));
 			}
 		});
 		
@@ -157,38 +173,98 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				number1.add(0);
-				outputLabel.setText(number1.toString());
+				str.append("0");
+				number1.add("0");
+				outputLabel.setText(str.toString());
 			}
 		});
 		
 		JButton divide = new JButton("/");
 		divide.setFont(new Font("Verdana", 1, 22));
 		divide.setPreferredSize(new Dimension(65, 65));
+		divide.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				outputLabel.setText("/");
+			}
+		});
 		
 		JButton multiply = new JButton("x");
 		multiply.setFont(new Font("Verdana", 1, 22));
 		multiply.setPreferredSize(new Dimension(65, 65));
+		multiply.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				outputLabel.setText("x");
+			}
+		});
 		
 		JButton subtract = new JButton("-");
 		subtract.setFont(new Font("Verdana", 1, 22));
 		subtract.setPreferredSize(new Dimension(65, 65));
+		subtract.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				outputLabel.setText("-");
+			}
+		});
 		
 		JButton add = new JButton("+");
 		add.setFont(new Font("Verdana", 1, 22));
 		add.setPreferredSize(new Dimension(65, 65));
+		add.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				outputLabel.setText("+");
+			}
+		});
 		
-		JButton equals = new JButton("=");
+		equals = new JButton("=");
 		equals.setFont(new Font("Verdana", 1, 22));
 		equals.setPreferredSize(new Dimension(65, 65));
+		equals.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				num1Int = Integer.parseInt(str.toString());
+				outputLabel.setText(String.valueOf(num1Int) + " int");
+				//outputLabel.setText(number1.toString().replaceAll("[\\[\\]]", "").replaceAll(",", ""));
+			}
+		});
 		
 		JButton period = new JButton(".");
 		period.setFont(new Font("Verdana", 1, 22));
 		period.setPreferredSize(new Dimension(65, 65));
+		period.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				str.append(".");
+				number1.add(".");
+				outputLabel.setText(str.toString());
+			}
+		});
 		
 		JButton negative = new JButton("+/-");
 		negative.setFont(new Font("Verdana", 1, 15));
 		negative.setPreferredSize(new Dimension(65, 65));
+		negative.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (number1.get(0) != "-") {
+					number1.add(0, "-");
+					outputLabel.setText(number1.toString().replaceAll("[\\[\\]]", "").replaceAll(",", ""));
+				} else if (number1.get(0) == "-") {
+					number1.remove(0);
+					outputLabel.setText(number1.toString().replaceAll("[\\[\\]]", "").replaceAll(",", ""));
+				}
+			}
+		});
 		
 		JButton clear = new JButton("clr");
 		clear.setFont(new Font("Verdana", 1, 15));
@@ -197,8 +273,9 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				str.setLength(0);
 				number1.removeAll(number1);
-				outputLabel.setText(number1.toString());
+				outputLabel.setText("0");
 			}
 		});
 		
@@ -209,8 +286,13 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (str.length() > 0) {
+				str.setLength(str.length() - 1);
 				number1.remove(number1.size() - 1);
-				outputLabel.setText(number1.toString());
+				outputLabel.setText(str.toString());
+				} else if (str.length() == 0) {
+					outputLabel.setText("0");
+				}
 			}
 		});
 		
