@@ -23,8 +23,8 @@ public class CalculatorApp {
 	JPanel buttons;
 	JButton equals;
 	
-	private static int num1Int = 0;
-	//private static int num2Int = 0;
+	private static double num1Double = 0;
+	//private static double num2Double = 0;
 	
 	public CalculatorApp() {
 		
@@ -230,8 +230,8 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				num1Int = Integer.parseInt(str.toString());
-				outputLabel.setText(String.valueOf(num1Int) + " int");
+				num1Double = Double.parseDouble(str.toString());
+				outputLabel.setText(String.valueOf(num1Double) + " double");
 				//outputLabel.setText(number1.toString().replaceAll("[\\[\\]]", "").replaceAll(",", ""));
 			}
 		});
@@ -331,6 +331,8 @@ public class CalculatorApp {
 		buttons.add(zero);
 		buttons.add(period);
 		buttons.add(equals);
+		
+		
 		
 		main.add(output);
 		main.add(buttons);
