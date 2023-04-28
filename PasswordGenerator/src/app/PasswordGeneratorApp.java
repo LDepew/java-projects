@@ -5,10 +5,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,12 +25,14 @@ public class PasswordGeneratorApp {
 	JPanel choices;
 	JLabel numChar;
 	JTextField numCharText;
+	JCheckBox lowercase;
+	JCheckBox symbols;
 	JPanel outputPanel;
 	JPanel buttonPanel;
 	JLabel output;
 	JButton button;
 	
-	public static String CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+	public static String CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 	public static String COUNT;
 	
 	public PasswordGeneratorApp() {
@@ -48,15 +53,36 @@ public class PasswordGeneratorApp {
 		numCharText = new JTextField();
 		numCharText.setPreferredSize(new Dimension(200, 20));
 		COUNT += Integer.getInteger(numCharText.getText());
-		//numCharText.setValue(COUNT);
-		//numCharText.setColumns(10);
-		//numCharText.addPropertyChangeListener("value", (PropertyChangeListener) this);
+		
+		symbols = new JCheckBox("Symbols", false);
+		symbols.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+				}
+				
+			}
+		});
+		
+		lowercase = new JCheckBox("Lower Case", false);
+		lowercase.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					CHARS = CHARS.toLowerCase();
+				}
+				
+			}
+		});
 		
 		choices = new JPanel();
 		choices.setPreferredSize(new Dimension(280, 150));
 		choices.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
 		choices.add(numChar);
 		choices.add(numCharText);
+		choices.add(lowercase);
+		choices.add(symbols);
 		
 		output = new JLabel("Password Here");
 		output.setFont(new Font("Verdana", 1, 20));
