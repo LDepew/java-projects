@@ -25,6 +25,7 @@ public class CalculatorApp {
 	
 	private static double num1Double = 0;
 	//private static double num2Double = 0;
+	public static char equation;
 	
 	public CalculatorApp() {
 		
@@ -186,6 +187,7 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				equation = '/';
 				outputLabel.setText("/");
 			}
 		});
@@ -197,6 +199,7 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				equation = 'x';
 				outputLabel.setText("x");
 			}
 		});
@@ -208,6 +211,7 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				equation = '-';
 				outputLabel.setText("-");
 			}
 		});
@@ -219,6 +223,7 @@ public class CalculatorApp {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				equation = '+';
 				outputLabel.setText("+");
 			}
 		});
