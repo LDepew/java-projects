@@ -25,14 +25,19 @@ public class PasswordGeneratorApp {
 	JPanel choices;
 	JLabel numChar;
 	JTextField numCharText;
+	JLabel numPass;
+	JTextField numPassText;
 	JCheckBox lowercase;
+	JCheckBox uppercase;
 	JCheckBox symbols;
+	JCheckBox numbers;
 	JPanel outputPanel;
 	JPanel buttonPanel;
 	JLabel output;
-	JButton button;
+	JButton generatePass;
+	JButton exit;
 	
-	public static String CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+	public static String CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public static String COUNT;
 	
 	public PasswordGeneratorApp() {
@@ -51,7 +56,7 @@ public class PasswordGeneratorApp {
 		numChar.setPreferredSize(new Dimension(200, 20));
 		
 		numCharText = new JTextField();
-		numCharText.setPreferredSize(new Dimension(200, 20));
+		numCharText.setPreferredSize(new Dimension(30, 20));
 		COUNT += Integer.getInteger(numCharText.getText());
 		
 		symbols = new JCheckBox("Symbols", false);
@@ -60,6 +65,17 @@ public class PasswordGeneratorApp {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+				}
+				
+			}
+		});
+		
+		numbers = new JCheckBox("Numbers", false);
+		numbers.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 				}
 				
 			}
@@ -79,10 +95,11 @@ public class PasswordGeneratorApp {
 		choices = new JPanel();
 		choices.setPreferredSize(new Dimension(280, 150));
 		choices.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
-		choices.add(numChar);
 		choices.add(numCharText);
+		choices.add(numChar);
 		choices.add(lowercase);
 		choices.add(symbols);
+		choices.add(numbers);
 		
 		output = new JLabel("Password Here");
 		output.setFont(new Font("Verdana", 1, 20));
@@ -93,10 +110,10 @@ public class PasswordGeneratorApp {
 		outputPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
 		outputPanel.add(output);
 		
-		button = new JButton("Generate Password");
-		button.setFont(new Font("Verdana", 1, 15));
-		button.setPreferredSize(new Dimension( 200, 80));
-		button.addActionListener(new ActionListener() {
+		generatePass = new JButton("Generate Password");
+		generatePass.setFont(new Font("Verdana", 1, 15));
+		generatePass.setPreferredSize(new Dimension( 200, 40));
+		generatePass.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -111,10 +128,22 @@ public class PasswordGeneratorApp {
 			}
 		});
 		
+		exit = new JButton("Exit");
+		exit.setFont(new Font("Verdana", 1, 15));
+		exit.setPreferredSize(new Dimension(200, 40));
+		exit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		
 		buttonPanel = new JPanel();
 		buttonPanel.setPreferredSize(new Dimension(280, 100));
 		buttonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
-		buttonPanel.add(button);
+		buttonPanel.add(generatePass);
+		buttonPanel.add(exit);
 		
 		main.add(choices);
 		main.add(outputPanel);
