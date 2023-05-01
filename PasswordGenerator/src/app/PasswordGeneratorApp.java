@@ -23,6 +23,7 @@ public class PasswordGeneratorApp {
 	JFrame frame;
 	JPanel main;
 	JPanel choices;
+	JPanel numCharSpace;
 	JLabel numChar;
 	JTextField numCharText;
 	JLabel numPass;
@@ -56,8 +57,14 @@ public class PasswordGeneratorApp {
 		numChar.setPreferredSize(new Dimension(200, 20));
 		
 		numCharText = new JTextField();
-		numCharText.setPreferredSize(new Dimension(30, 20));
+		numCharText.setPreferredSize(new Dimension(40, 20));
 		COUNT += Integer.getInteger(numCharText.getText());
+		
+		numCharSpace = new JPanel();
+		numCharSpace.setPreferredSize(new Dimension(280, 40));
+		numCharSpace.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
+		numCharSpace.add(numCharText);
+		numCharSpace.add(numChar);
 		
 		symbols = new JCheckBox("Symbols", false);
 		symbols.addItemListener(new ItemListener() {
@@ -88,15 +95,25 @@ public class PasswordGeneratorApp {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					CHARS = CHARS.toLowerCase();
 				}
-				
+			}
+		});
+		
+		uppercase = new JCheckBox("Upper Case", false);
+		uppercase.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					CHARS = CHARS.toUpperCase();
+				}
 			}
 		});
 		
 		choices = new JPanel();
-		choices.setPreferredSize(new Dimension(280, 150));
+		choices.setPreferredSize(new Dimension(280, 80));
 		choices.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
-		choices.add(numCharText);
-		choices.add(numChar);
+		//choices.add(numCharText);
+		//choices.add(numChar);
+		choices.add(uppercase);
 		choices.add(lowercase);
 		choices.add(symbols);
 		choices.add(numbers);
@@ -145,6 +162,7 @@ public class PasswordGeneratorApp {
 		buttonPanel.add(generatePass);
 		buttonPanel.add(exit);
 		
+		main.add(numCharSpace);
 		main.add(choices);
 		main.add(outputPanel);
 		main.add(buttonPanel);
