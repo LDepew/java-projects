@@ -47,21 +47,21 @@ public class PasswordGeneratorApp {
         Random rnd = new Random();
 		
 		frame = new JFrame();
-		frame.setSize(500, 500);
+		frame.setSize(340, 440);
 		frame.setResizable(false);
 		
 		main = new JPanel();
-		main.setSize(500, 500);
+		main.setSize(340, 440);
 		
 		numChar = new JLabel("Number of Characters");
-		numChar.setPreferredSize(new Dimension(200, 20));
+		numChar.setPreferredSize(new Dimension(140, 20));
 		
 		numCharText = new JTextField();
 		numCharText.setPreferredSize(new Dimension(40, 20));
 		COUNT += Integer.getInteger(numCharText.getText());
 		
 		numCharSpace = new JPanel();
-		numCharSpace.setPreferredSize(new Dimension(280, 40));
+		numCharSpace.setPreferredSize(new Dimension(220, 40));
 		numCharSpace.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
 		numCharSpace.add(numCharText);
 		numCharSpace.add(numChar);
@@ -71,7 +71,7 @@ public class PasswordGeneratorApp {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-					CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+					CHARS = CHARS + "!@#$%^&*";
 				}
 				
 			}
@@ -82,7 +82,7 @@ public class PasswordGeneratorApp {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-					CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+					CHARS =  CHARS + "1234567890";
 				}
 				
 			}
@@ -109,11 +109,11 @@ public class PasswordGeneratorApp {
 		});
 		
 		choices = new JPanel();
-		choices.setPreferredSize(new Dimension(280, 80));
+		choices.setPreferredSize(new Dimension(320, 50));
 		choices.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
 		//choices.add(numCharText);
 		//choices.add(numChar);
-		choices.add(uppercase);
+		//choices.add(uppercase);
 		choices.add(lowercase);
 		choices.add(symbols);
 		choices.add(numbers);
@@ -123,7 +123,7 @@ public class PasswordGeneratorApp {
 		output.setBorder(new EmptyBorder(50,50,50,50));
 		
 		outputPanel = new JPanel();
-		outputPanel.setPreferredSize(new Dimension(280, 150));
+		outputPanel.setPreferredSize(new Dimension(320, 150));
 		outputPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
 		outputPanel.add(output);
 		
@@ -157,7 +157,7 @@ public class PasswordGeneratorApp {
 		});
 		
 		buttonPanel = new JPanel();
-		buttonPanel.setPreferredSize(new Dimension(280, 100));
+		buttonPanel.setPreferredSize(new Dimension(320, 100));
 		buttonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
 		buttonPanel.add(generatePass);
 		buttonPanel.add(exit);
