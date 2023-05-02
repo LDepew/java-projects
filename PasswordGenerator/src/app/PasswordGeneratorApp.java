@@ -47,11 +47,11 @@ public class PasswordGeneratorApp {
         Random rnd = new Random();
 		
 		frame = new JFrame();
-		frame.setSize(340, 440);
+		frame.setSize(340, 410);
 		frame.setResizable(false);
 		
 		main = new JPanel();
-		main.setSize(340, 440);
+		main.setSize(340, 410);
 		
 		numChar = new JLabel("Number of Characters");
 		numChar.setPreferredSize(new Dimension(140, 20));
