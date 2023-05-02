@@ -345,6 +345,7 @@ public class CalculatorApp {
 		frame.add(main);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Calculator App");
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 	

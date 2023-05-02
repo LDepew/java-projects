@@ -213,6 +213,7 @@ public class GUI {
 		frame.add(main);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Guitar Tuner");
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		
 		main.add(title);

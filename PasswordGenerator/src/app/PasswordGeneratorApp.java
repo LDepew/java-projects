@@ -170,6 +170,8 @@ public class PasswordGeneratorApp {
 		frame.add(main);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Password Generator");
+		frame.setUndecorated(false);
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 

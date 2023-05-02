@@ -89,6 +89,7 @@ public class GUI {
 		frame.add(panel3, BorderLayout.LINE_END);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Red Light, Green Light");
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		
 		
