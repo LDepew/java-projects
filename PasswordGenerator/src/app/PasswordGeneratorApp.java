@@ -62,7 +62,7 @@ public class PasswordGeneratorApp {
 		
 		numCharSpace = new JPanel();
 		numCharSpace.setPreferredSize(new Dimension(220, 40));
-		numCharSpace.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
+		//numCharSpace.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
 		numCharSpace.add(numCharText);
 		numCharSpace.add(numChar);
 		
@@ -110,7 +110,7 @@ public class PasswordGeneratorApp {
 		
 		choices = new JPanel();
 		choices.setPreferredSize(new Dimension(320, 50));
-		choices.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
+		//choices.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
 		//choices.add(numCharText);
 		//choices.add(numChar);
 		//choices.add(uppercase);
@@ -124,7 +124,7 @@ public class PasswordGeneratorApp {
 		
 		outputPanel = new JPanel();
 		outputPanel.setPreferredSize(new Dimension(320, 150));
-		outputPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
+		//outputPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
 		outputPanel.add(output);
 		
 		generatePass = new JButton("Generate Password");
@@ -158,7 +158,7 @@ public class PasswordGeneratorApp {
 		
 		buttonPanel = new JPanel();
 		buttonPanel.setPreferredSize(new Dimension(320, 100));
-		buttonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
+		//buttonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, false));
 		buttonPanel.add(generatePass);
 		buttonPanel.add(exit);
 		

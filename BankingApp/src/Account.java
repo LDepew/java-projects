@@ -107,6 +107,16 @@ public class Account extends BankingApp {
 				case 'F':
 					System.out.println("In Progress");
 					System.out.println("=============================");
+					BankingApp b = new BankingApp();
+					b.Fprint();
+					for (int i = 0; i < BankingApp.names.size(); i++) {
+						String namesCopy = BankingApp.names.get(i);
+						if (customerName.equals(namesCopy)){
+							BankingApp.names.remove(i);
+							BankingApp.accounts.remove(i);
+							BankingApp.balances.remove(i);
+						}
+					}
 					break;
 					
 				case 'G':

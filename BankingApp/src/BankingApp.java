@@ -15,11 +15,15 @@ import java.util.Scanner;
 @SuppressWarnings("serial")
 public class BankingApp implements Serializable {
 
+	public static ArrayList<String> names = new ArrayList<String>();
+	public static ArrayList<Integer> accounts = new ArrayList<Integer>();
+	public static ArrayList<Double> balances = new ArrayList<Double>();
+	
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		
 		File f = new File("output.tmp");
-		ArrayList<String> names = new ArrayList<String>();
+		//ArrayList<String> names = new ArrayList<String>();
 		
 		if (f.exists() && !f.isDirectory()) {
 			BufferedReader bufReader = new BufferedReader(new FileReader("output.tmp"));
@@ -36,7 +40,7 @@ public class BankingApp implements Serializable {
 		}
 
 		File f2 = new File("output2.tmp");
-		ArrayList<Integer> accounts = new ArrayList<Integer>();
+		//ArrayList<Integer> accounts = new ArrayList<Integer>();
 		
 		if (f2.exists() && !f2.isDirectory()) {
 			BufferedReader bufReader2 = new BufferedReader(new FileReader("output2.tmp"));
@@ -56,7 +60,7 @@ public class BankingApp implements Serializable {
 		
 		File f3 = new File("output3.tmp");
 		
-		ArrayList<Double> balances = new ArrayList<Double>();
+		//ArrayList<Double> balances = new ArrayList<Double>();
 		
 		if (f3.exists() && !f3.isDirectory()) {
 			BufferedReader bufReader3 = new BufferedReader(new FileReader("output3.tmp"));
@@ -166,5 +170,9 @@ public class BankingApp implements Serializable {
 		
 		sc.close();
 		
+	}
+
+	public void Fprint() {
+		System.out.println("F in progress system!");
 	}
 }
