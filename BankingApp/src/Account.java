@@ -105,10 +105,9 @@ public class Account extends BankingApp {
 					break;
 					
 				case 'F':
-					System.out.println("In Progress");
-					System.out.println("=============================");
-					BankingApp b = new BankingApp();
-					b.Fprint();
+					
+					//BankingApp b = new BankingApp();
+					//b.Fprint();
 					for (int i = 0; i < BankingApp.names.size(); i++) {
 						String namesCopy = BankingApp.names.get(i);
 						if (customerName.equals(namesCopy)){
@@ -117,6 +116,8 @@ public class Account extends BankingApp {
 							BankingApp.balances.remove(i);
 						}
 					}
+					System.out.println("Account Removed");
+					System.out.println("=============================");
 					break;
 					
 				case 'G':

@@ -27,7 +27,7 @@ public class BankingApp implements Serializable {
 		
 		if (f.exists() && !f.isDirectory()) {
 			BufferedReader bufReader = new BufferedReader(new FileReader("output.tmp"));
-			System.out.println("File is here");
+			//System.out.println("File is here");
 		String line = bufReader.readLine();
 		while (line != null) {
 			names.add(line);
@@ -35,7 +35,7 @@ public class BankingApp implements Serializable {
 		}
 		bufReader.close();
 		} else {
-			System.out.println("File is not here");
+			//System.out.println("File is not here");
 			names.add("System");
 		}
 
@@ -44,7 +44,7 @@ public class BankingApp implements Serializable {
 		
 		if (f2.exists() && !f2.isDirectory()) {
 			BufferedReader bufReader2 = new BufferedReader(new FileReader("output2.tmp"));
-			System.out.println("File2 is here");
+			//System.out.println("File2 is here");
 		String line2 = bufReader2.readLine();
 		int line2b = 0;
 		while (line2 != null) {
@@ -54,7 +54,7 @@ public class BankingApp implements Serializable {
 		}
 		bufReader2.close();
 		} else {
-			System.out.println("File2 is not here");
+			//System.out.println("File2 is not here");
 			accounts.add(1000);
 		}
 		
@@ -64,7 +64,7 @@ public class BankingApp implements Serializable {
 		
 		if (f3.exists() && !f3.isDirectory()) {
 			BufferedReader bufReader3 = new BufferedReader(new FileReader("output3.tmp"));
-			System.out.println("File3 is here");
+			//System.out.println("File3 is here");
 		String line3 = bufReader3.readLine();
 		double line3b;
 		while (line3 != null) {
@@ -74,20 +74,20 @@ public class BankingApp implements Serializable {
 		}
 		bufReader3.close();
 		} else {
-			System.out.println("File3 is not here");
+			//System.out.println("File3 is not here");
 			balances.add(0000.00);
 		}
 		
 		for (int i = 0; i <  names.size(); i++) {
-			System.out.println(names.get(i));
+			//System.out.println(names.get(i));
 		}
 		
 		for (int i = 0; i < accounts.size(); i++) {
-			System.out.println(accounts.get(i));
+			//System.out.println(accounts.get(i));
 		}
 		
 		for (int i = 0; i < balances.size(); i++) {
-			System.out.println(balances.get(i));
+			//System.out.println(balances.get(i));
 		}
 		
 		System.out.println("Enter account name: ");
@@ -109,45 +109,45 @@ public class BankingApp implements Serializable {
 		}
 		
 		for (int i = 0; i < names.size(); i++) {
-			System.out.println(names.get(i));
-			System.out.println(accounts.get(i));
-			System.out.println(balances.get(i));
+			//System.out.println(names.get(i));
+			//System.out.println(accounts.get(i));
+			//System.out.println(balances.get(i));
 		}
 			
 		if (names.contains(name)) {
 			Account bob = null;
 			for (int i = 0; i <= names.indexOf(name); i++) {
 				bob = new Account(names.get(i), accounts.get(i), balances.get(i));
-				System.out.println("a2: " + bob.customerBalance);
+				//System.out.println("a2: " + bob.customerBalance);
 			}
 			balance = bob.customerBalance;
-			System.out.println("Bob cBalance: " + balance);
+			//System.out.println("Bob cBalance: " + balance);
 			bob.showMenu();
 			balance = bob.customerBalance;
-			System.out.println("a2 after: " + balance);
+			//System.out.println("a2 after: " + balance);
 		}
 		
-		System.out.println("Balance before setting: " + balance);
+		//System.out.println("Balance before setting: " + balance);
 		
 		int indexname = names.indexOf(name);
 		
 		if (names.contains(name)) {
-			System.out.println("Names contains name");
+			//System.out.println("Names contains name");
 			for (int i = 0; i <= indexname; i++) {
-				System.out.println("Names i: " + names.get(i));
-				System.out.println("Balances i: " + balances.get(i));
+				//System.out.println("Names i: " + names.get(i));
+				//System.out.println("Balances i: " + balances.get(i));
 				if (balances.indexOf(balances.get(i)) == indexname) {
-					System.out.println("I matches name!");
+					//System.out.println("I matches name!");
 					balances.set(i, balance);
 				}
 				else {
-					System.out.println("I does NOT match name!");
+					//System.out.println("I does NOT match name!");
 				}
 			}
 		}
 		
 		for (int i = 0; i < balances.size(); i++) {
-			System.out.println(balances.get(i));
+			//System.out.println(balances.get(i));
 		}
 				
 		FileWriter writer = new FileWriter("output.tmp"); 
