@@ -28,6 +28,7 @@ public class LanguageTranslatorApp {
 	
 	public static String translateText = "";
 	public static String translatedText = "Bob";
+	public static final String GOOGLE_SEARCH_URL = "https://www.google.com/search";
 	
 	public LanguageTranslatorApp() {
 		
@@ -68,9 +69,9 @@ public class LanguageTranslatorApp {
 				 outputText.setText(translatedText);
 				 
 				 try {
-			         String search = "?q="+translateText.toString().trim();
+			         String search = "?q="+translateText.toString().trim() + " in spanish";
 			         search = search.replaceAll(" ","+");
-			         String url = "https://www.google.com/"+search;
+			         String url = GOOGLE_SEARCH_URL +search;
 			         java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
 			       }
 			       catch (java.io.IOException e1) {
