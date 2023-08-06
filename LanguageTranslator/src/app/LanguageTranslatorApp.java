@@ -48,6 +48,8 @@ public class LanguageTranslatorApp {
 		
 		inputText = new JTextField();
 		inputText.setPreferredSize(new Dimension(740, 190));
+		inputText.setFont(new Font("Verdana", 1, 20));
+		inputText.setHorizontalAlignment(JTextField.CENTER);
 		
 		inputPanel = new JPanel();
 		inputPanel.setPreferredSize(new Dimension(750, 200));
@@ -55,7 +57,7 @@ public class LanguageTranslatorApp {
 		inputPanel.add(inputText);
 		
 		translateButton = new JButton("Translate");
-		translateButton.setFont(new Font("Verdana", 1, 15));
+		translateButton.setFont(new Font("Verdana", 1, 20));
 		translateButton.setPreferredSize(new Dimension(400, 65));
 		translateButton.addActionListener(new ActionListener() {
 			
@@ -64,6 +66,16 @@ public class LanguageTranslatorApp {
 				translateText = inputText.getText();
 				translatedText = translateText;
 				 outputText.setText(translatedText);
+				 
+				 try {
+			         String search = "?q="+translateText.toString().trim();
+			         search = search.replaceAll(" ","+");
+			         String url = "https://www.google.com/"+search;
+			         java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+			       }
+			       catch (java.io.IOException e1) {
+			           System.out.println(e1.getMessage());
+			       }
 			}
 		});
 		
